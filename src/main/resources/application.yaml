@@ -1,0 +1,43 @@
+
+spring:
+  application:
+    name: service-jfb-one
+  datasource:
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5434/jfbr?user=postgres}
+    driver-class-name: org.postgresql.Driver
+    flyway:
+      enabled: true
+    jpa:
+      properties:
+        hibernate.hbm2ddl.auto: validate
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          jdbc:
+            lob:
+              non_contextual_creation: true
+    jackson:
+      date-format: yyyy-MM-dd'T'HH:mm:ssZ
+      mapper:
+        ACCEPT_CASE_INSENSITIVE_ENUMS: true
+
+  management:
+    endpoints:
+      web:
+        base-path: /
+        path-mapping:
+          health: health
+  logging:
+    level:
+      org:
+        zalando:
+          logbook: TRACE
+
+
+server:
+  servlet:
+    context-path: /api
+rest:
+  client:
+    api-football:
+      baseUrl: ${API_FOOTBALL_URL:http://localhost:8085/v3}
+      value: "ApiFootballTeam"
