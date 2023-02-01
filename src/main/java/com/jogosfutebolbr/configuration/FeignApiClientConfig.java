@@ -5,4 +5,4 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableFeignClients(basePackages = {"com.jogosfutebolbr.infrastructure.restclient"})
-public class FeignApiClient {}
+public class FeignApiClientConfig {}
